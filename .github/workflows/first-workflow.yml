@@ -1,10 +1,12 @@
-name: First workflow
+name: first-one
 on: push
 jobs:
     test-job:
         runs-on: ubuntu-latest
         steps:
-            - name: Test-job welcome message
-              run: echo "Executing the test job"
+            - name: Welcome message
+              run: echo "Hello World"
+            - name: checkout repository
+              uses: actions/checkout@v7
             - name: Readme file content
-              run: cat README.md  
+              run:  cat README.md
