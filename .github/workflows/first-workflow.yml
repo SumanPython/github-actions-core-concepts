@@ -4,9 +4,11 @@ jobs:
     test-job:
         runs-on: ubuntu-latest
         steps:
-            - name: Welcome message
-              run: echo "Hello World"
+            
             - name: checkout repository
               uses: actions/checkout@v7
-            - name: Readme file content
-              run:  cat README.md
+            - name: Welcome message
+              run: echo "Hello World"
+                   cat README.md
+
+          
