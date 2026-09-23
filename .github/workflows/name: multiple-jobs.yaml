@@ -1,0 +1,19 @@
+name: multiple-jobs
+on: push
+jobs:
+  build-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build the app
+        run: |
+        sleep 3
+        echo "building the app"
+        
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test the app
+        run: |
+        sleep 3
+        echo "Testing the app"    
+
