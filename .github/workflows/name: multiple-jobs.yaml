@@ -10,6 +10,7 @@ jobs:
           echo "building the app"
         
   test-job:
+    needs: build-job
     runs-on: ubuntu-latest
     steps:
       - name: Test the app
@@ -18,6 +19,7 @@ jobs:
           echo "Testing the app"    
 
   deploy-job:
+    needs: test-job
     runs-on: ubuntu-latest
     steps:
       - name: deploy the app
