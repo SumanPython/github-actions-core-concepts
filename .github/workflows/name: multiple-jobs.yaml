@@ -7,7 +7,7 @@ jobs:
       - name: build the app
         run: |
           sleep 3
-          echo "building the app" > app.txt
+          echo "building the app" >app.txt
         
   test-job:
     needs: build-job
