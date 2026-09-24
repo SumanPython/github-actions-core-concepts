@@ -1,13 +1,49 @@
 name: first-one
 on: push
 jobs:
-    test-job:
+    build-job:
         runs-on: ubuntu-latest
         steps:
             
-            - name: checkout repository
-              uses: actions/checkout@v7
-            - name: Welcome message
-              run: |
-                echo "Hello World"
-                cat README.md
+        - name: Build
+          run: echo 'Hello' > app.txt
+
+        - name: working with upload artifact
+          uses: actions/upload-artifact@v4
+          with: 
+            name: "file app.txt"
+            path: app.txt
+             
+
+    test-job:
+        needs: build-job
+        runs-on: ubuntu-latest
+        steps:
+            
+           - name: reading the app.txt
+             uses: actions/download-artifact@v4
+             with: 
+              name: "file app.txt"
+              path: app.txt
+
+           - name: Build
+             run: cat app.txt
+     
+
+    deploy-job:
+        needs: test-job
+        runs-on: ubuntu-latest
+        steps:
+            
+           - name: Deploy
+             uses: actions/download-artifact@v4
+             with: 
+              name: "file app.txt"
+              path: app.txt
+
+           - name: display the app.txt
+             run: cat app.txt
+
+
+              
+
