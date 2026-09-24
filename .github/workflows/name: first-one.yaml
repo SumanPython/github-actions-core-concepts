@@ -1,49 +1,38 @@
-name: first-one
+name: build test deploy
 on: push
 jobs:
-    build-job:
-        runs-on: ubuntu-latest
-        steps:
-            
-        - name: Build
-          run: echo 'Hello' > app.txt
+  build-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: create app.txt
+        run: echo "Hello World" > app.txt
+      - name: upload the artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: about app.txt
+          path: app.txt
 
-        - name: working with upload artifact
-          uses: actions/upload-artifact@v4
-          with: 
-            name: "file app.txt"
-            path: app.txt
-             
+  test-job:
+    needs: build-job               
+    runs-on: ubuntu-latest
+    steps:
+      - name: testig the app.txt
+        uses: actions/download-artifact@v4
+        with:
+          name: about app.txt
+      - name: reading the file
+        run: cat app.txt
 
-    test-job:
-        needs: build-job
-        runs-on: ubuntu-latest
-        steps:
-            
-           - name: reading the app.txt
-             uses: actions/download-artifact@v4
-             with: 
-              name: "file app.txt"
-              
+  deploy-job:
+    needs: test-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploying the text file
+        uses: actions/download-artifact@v4
+        with: 
+          name: about app.txt
+      - name: reading the filt app.txt
+        run: cat app.txt
 
-           - name: Build
-             run: cat app.txt
-     
-
-    deploy-job:
-        needs: test-job
-        runs-on: ubuntu-latest
-        steps:
-            
-           - name: Deploy
-             uses: actions/download-artifact@v4
-             with: 
-              name: "file app.txt"
-           
-
-           - name: display the app.txt
-             run: cat app.txt
-
-
-              
+    
 
