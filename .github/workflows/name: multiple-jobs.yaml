@@ -10,7 +10,7 @@ jobs:
           echo "building the app" >app.txt
       - name: upload the file app.txt    
         uses: actions/upload-artifact@v7
-          with:
+        with:
             name: app.txt file
             path: app.txt
         
@@ -19,13 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
        - name: download the file app.txt    
-          uses: actions/download-artifact@v8
-             with:
+         uses: actions/download-artifact@v8
+         with:
               name: app.txt file
-              path: app.txt
-            
+              path: app.txt       
              
-
       - name: Test the app
         run: |
           sleep 3
@@ -39,10 +37,10 @@ jobs:
     steps:
 
       - name: download the file app.txt    
-           uses: actions/download-artifact@v8
-             with:
-              name: app.txt file
-              path: app.txt
+        uses: actions/download-artifact@v8
+        with:
+            name: app.txt file
+            path: app.txt
 
       - name: deploy the app
         run: |
