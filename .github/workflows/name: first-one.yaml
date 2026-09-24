@@ -39,7 +39,7 @@ jobs:
              uses: actions/download-artifact@v4
              with: 
               name: "file app.txt"
-              path: app.txt
+           
 
            - name: display the app.txt
              run: cat app.txt
