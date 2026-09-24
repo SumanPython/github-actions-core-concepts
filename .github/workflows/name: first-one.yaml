@@ -24,7 +24,7 @@ jobs:
              uses: actions/download-artifact@v4
              with: 
               name: "file app.txt"
-              path: app.txt
+              
 
            - name: Build
              run: cat app.txt
