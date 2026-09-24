@@ -33,7 +33,6 @@ jobs:
           echo "Testing the app"
 
      
-
   deploy-job:
     needs: test-job
     runs-on: ubuntu-latest
