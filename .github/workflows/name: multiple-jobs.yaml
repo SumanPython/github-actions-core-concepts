@@ -11,8 +11,8 @@ jobs:
       - name: upload the file app.txt    
         uses: actions/upload-artifact@v7
           with:
-            name:app.txt file
-            path:app.txt
+            name: app.txt file
+            path: app.txt
         
   test-job:
     needs: build-job
