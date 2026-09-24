@@ -29,7 +29,6 @@ jobs:
           sleep 3
           cat app.txt
           echo "Testing the app"
-
      
   deploy-job:
     needs: test-job
